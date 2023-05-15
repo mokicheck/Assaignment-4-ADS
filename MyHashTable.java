@@ -6,3 +6,6 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         boolean exit = false;
+
+        while (!exit) {
+            System.out.println("Enter your choice:");
