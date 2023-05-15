@@ -293,3 +293,17 @@ public class MyTestingClass {
     }
 }
 ```
+
+The provided code demonstrates the usage of a hash table implemented in the `MyHashTable` class. It also includes a `MyTestingClass` that is used as a key in the hash table. The code performs the following tasks:
+
+1. `MyTestingClass` is a class representing an object with an integer `x` and a string `y` as its properties. It overrides the `hashCode()` method to generate a hash code based on `x` and `y`.
+
+2. The code initializes a static list called `bucketSizes` to keep track of the sizes of each bucket in the hash table. It also creates an instance of the `MyHashTable` class called `ht` and a `Random` object called `random`.
+
+3. The `main` method is the entry point of the program. It sets the value of `count` and then calls the `addElements` method to add elements to the hash table, and finally, calls the `printBucketSizes` method to print the sizes of each bucket in the hash table.
+
+4. The `addElements` method adds `count` number of elements to the hash table. It generates a random integer `x` and creates a string `y` based on `x`. It then creates a new `MyTestingClass` object as the key and adds it to the hash table using the `put` method. It also keeps track of the sizes of each bucket by updating the `bucketSizes` list.
+
+5. The `printBucketSizes` method iterates over the `bucketSizes` list and prints the size of each bucket. It also calculates the sum of all bucket sizes and checks if it exceeds or equals 10,000. If the sum reaches or exceeds 10,000, it prints a message indicating this and breaks the loop.
+
+Overall, this code demonstrates the usage of a custom hash table implementation and provides insights into the distribution of elements across the buckets in the hash table.
