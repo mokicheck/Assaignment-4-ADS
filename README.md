@@ -78,6 +78,8 @@ public class main {
 }
 ```
 
+The code I provided demonstrates a basic interactive console-based program that allows the user to perform various operations on a custom MyHashTable data structure. This code allows the user to interactively perform operations such as inserting key-value pairs, retrieving values by keys, removing key-value pairs, checking if a value exists, and finding keys by values using the MyHashTable data structure.
+
 --------
 
 # Class MyHashTable [Link](MyHashTable.java)
