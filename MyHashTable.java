@@ -22,3 +22,23 @@ public class Main {
                     table.put(key, value);
                     System.out.println("Value inserted!");
                     break;
+                case 2:
+                    System.out.println("Enter key:");
+                    key = scanner.next();
+                    Integer result = table.get(key);
+                    if (result != null) {
+                        System.out.println("Value: " + result);
+                    } else {
+                        System.out.println("Key not found!");
+                    }
+                    break;
+                case 3:
+                    System.out.println("Enter key:");
+                    key = scanner.next();
+                    Integer removedValue = table.remove(key);
+                    if (removedValue != null) {
+                        System.out.println("Value removed: " + removedValue);
+                    } else {
+                        System.out.println("Key not found!");
+                    }
+                    break;
