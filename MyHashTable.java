@@ -1,19 +1,19 @@
 public class MyHashTable<K, V> {
-    private HashNode[] chainList;
-    private int M = 11;
+    private Node<K, V>[] table;
+    private int capacity;
 
-    private static class HashNode<K, V> {
+    private static class Node<K, V> {
         private K key;
         private V value;
-        private HashNode<K, V> next;
+        private Node<K, V> next;
 
-        public HashNode(K key, V value) {
+        public Node(K key, V value) {
             this.key = key;
             this.value = value;
             this.next = null;
         }
 
-        public void setNext(HashNode<K, V> next) {
+        public void setNext(Node<K, V> next) {
             this.next = next;
         }
 
@@ -21,7 +21,7 @@ public class MyHashTable<K, V> {
             this.value = value;
         }
 
-        public HashNode<K, V> getNext() {
+        public Node<K, V> getNext() {
             return next;
         }
 
@@ -32,7 +32,6 @@ public class MyHashTable<K, V> {
         public V getValue() {
             return value;
         }
-
         @Override
         public String toString() {
             return "{" + key + " " + value + "}";
@@ -40,16 +39,17 @@ public class MyHashTable<K, V> {
     }
 
     public MyHashTable() {
-        chainList = new HashNode[M];
+        capacity = 11;
+        table = new Node[capacity];
     }
 
-    public MyHashTable(int M) {
-        this.M = M;
-        chainList = new HashNode[M];
+    public MyHashTable(int capacity) {
+        this.capacity = capacity;
+        table = new Node[capacity];
     }
 
     public int hash(K key) {
-        return Math.abs(key.hashCode() % M);
+        return Math.abs(key.hashCode() % capacity);
     }
 
     public void put(K key, V value) {
