@@ -61,3 +61,8 @@ public class Main {
                 case 6:
                     exit = true;
                     break;
+                default:
+                    System.out.println("Invalid choice!");
+
+            }
+            System.out.println();
