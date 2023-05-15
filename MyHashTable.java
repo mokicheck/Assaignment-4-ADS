@@ -32,6 +32,7 @@ public class MyHashTable<K, V> {
         public V getValue() {
             return value;
         }
+
         @Override
         public String toString() {
             return "{" + key + " " + value + "}";
@@ -53,35 +54,73 @@ public class MyHashTable<K, V> {
     }
 
     public void put(K key, V value) {
-        putRecursive(key, value, chainList, 0);
+        int index = hash(key);
+        Node<K, V> newNode = new Node<>(key, value);
+        if (table[index] == null) {
+            table[index] = newNode;
+        } else {
+            Node<K, V> currentNode = table[index];
+            while (currentNode.getNext() != null) {
+                currentNode = currentNode.getNext();
+            }
+            currentNode.setNext(newNode);
+        }
     }
 
-    private void putRecursive(K key, V value, HashNode<K, V>[] chainList, int index) {
-        if (index >= chainList.length) {
-            return;
-        }
-        HashNode<K, V> newNode = new HashNode<>(key, value);
-        if (chainList[index] == null) {
-            chainList[index] = newNode;
-            return;
-        }
-        putRecursive(key, value, chainList, index + 1);
-    }
     public V get(K key) {
-        return (V) getRecursive(key, chainList, 0);
-    }
-
-    private V getRecursive(K key, HashNode<K, V>[] chainList, int index) {
-        if (index >= chainList.length) {
-            return null;
+        int index = hash(key);
+        Node<K, V> currentNode = table[index];
+        while (currentNode != null) {
+            if (currentNode.getKey().equals(key)) {
+                return currentNode.getValue();
+            }
+            currentNode = currentNode.getNext();
         }
-        HashNode<K, V> node = chainList[index];
-        if (node != null && node.getKey().equals(key)) {
-            return node.getValue();
-        }
-        return getRecursive(key, chainList, index + 1);
+        return null;
     }
 
     public V remove(K key) {
-        return (V) removeRecursive(key, chainList, 0, null);
+        int index = hash(key);
+        Node<K, V> currentNode = table[index];
+        Node<K, V> prevNode = null;
+        while (currentNode != null) {
+            if (currentNode.getKey().equals(key)) {
+                if (prevNode == null) {
+                    table[index] = currentNode.getNext();
+                } else {
+                    prevNode.setNext(currentNode.getNext());
+                }
+                return currentNode.getValue();
+            }
+            prevNode = currentNode;
+            currentNode = currentNode.getNext();
+        }
+        return null;
     }
+
+    public boolean contains(V value) {
+        for (int i = 0; i < capacity; i++) {
+            Node<K, V> currentNode = table[i];
+            while (currentNode != null) {
+                if (currentNode.getValue().equals(value)) {
+                    return true;
+                }
+                currentNode = currentNode.getNext();
+            }
+        }
+        return false;
+    }
+
+    public K getKey(V value) {
+        for (int i = 0; i < capacity; i++) {
+            Node<K, V> currentNode = table[i];
+            while (currentNode != null) {
+                if (currentNode.getValue().equals(value)) {
+                    return currentNode.getKey();
+                }
+                currentNode = currentNode.getNext();
+            }
+        }
+        return null;
+    }
+}
