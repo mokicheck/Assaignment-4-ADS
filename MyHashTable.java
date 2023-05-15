@@ -58,3 +58,6 @@ public class Main {
                         System.out.println("No such value.");
                     }
                     break;
+                case 6:
+                    exit = true;
+                    break;
