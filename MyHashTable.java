@@ -42,3 +42,19 @@ public class Main {
                         System.out.println("Key not found!");
                     }
                     break;
+                case 4:
+                    System.out.println("Enter value:");
+                    value = scanner.nextInt();
+                    boolean contains = table.contains(value);
+                    System.out.println("Value exists: " + contains);
+                    break;
+                case 5:
+                    System.out.println("Enter value:");
+                    value = scanner.nextInt();
+                    String foundKey = table.getKey(value);
+                    if (foundKey != null) {
+                        System.out.println("Key: " + foundKey);
+                    } else {
+                        System.out.println("No such value.");
+                    }
+                    break;
