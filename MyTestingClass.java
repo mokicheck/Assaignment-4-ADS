@@ -18,3 +18,6 @@ public class MyTestingClass {
         result = 31 * result + (y != null ? y.hashCode() : 0);
         return result;
     }
+    static List<Integer> bucketSizes = new ArrayList<>();
+    static MyHashTable<MyTestingClass, String> ht = new MyHashTable<>();
+    static Random random = new Random();
