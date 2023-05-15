@@ -13,3 +13,12 @@ public class Main {
             System.out.println("6. Exit");
 
             int choice = scanner.nextInt();
+            switch (choice) {
+                case 1:
+                    System.out.println("Enter key:");
+                    String key = scanner.next();
+                    System.out.println("Enter value:");
+                    int value = scanner.nextInt();
+                    table.put(key, value);
+                    System.out.println("Value inserted!");
+                    break;
