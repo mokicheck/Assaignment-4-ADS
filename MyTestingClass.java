@@ -21,3 +21,8 @@ public class MyTestingClass {
     static List<Integer> bucketSizes = new ArrayList<>();
     static MyHashTable<MyTestingClass, String> ht = new MyHashTable<>();
     static Random random = new Random();
+    public static void main(String[] args) {
+        int count = 999999999;
+        addElements(count);
+        printBucketSizes();
+    }
