@@ -212,6 +212,21 @@ public class MyHashTable<K, V> {
 }
 ```
 
+The code represents a basic implementation of a hash table data structure called `MyHashTable`. Here's a short description of the code:
+
+- The `MyHashTable` class is a generic class that takes two type parameters `K` and `V` representing the key and value types, respectively.
+- The class contains an array of `Node<K, V>` objects called `table` to store the key-value pairs.
+- The inner static class `Node<K, V>` represents a node in the hash table, storing a key, value, and a reference to the next node.
+- The class provides constructors to initialize the hash table with a default capacity or a specified capacity.
+- The `hash` method takes a key as input and returns the hashed index based on the key's hash code and the capacity of the table.
+- The `put` method allows inserting a key-value pair into the hash table. It calculates the index using the `hash` method, creates a new node, and appends it to the end of the linked list at the specified index.
+- The `get` method retrieves the value associated with a given key from the hash table. It calculates the index using the `hash` method and traverses the linked list at that index to find the matching key.
+- The `remove` method removes a key-value pair from the hash table based on the provided key. It calculates the index using the `hash` method and traverses the linked list at that index to find and remove the node with the matching key.
+- The `contains` method checks if a given value exists in the hash table. It iterates over each index in the table and traverses the linked list at each index to find the matching value.
+- The `getKey` method retrieves the key associated with a given value in the hash table. It iterates over each index in the table and traverses the linked list at each index to find the matching value and return its corresponding key.
+
+Overall, this code provides basic operations for inserting, retrieving, removing, and searching key-value pairs in a hash table data structure.
+
 
 ---------
 
