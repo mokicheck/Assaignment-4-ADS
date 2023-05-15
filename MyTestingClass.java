@@ -18,14 +18,17 @@ public class MyTestingClass {
         result = 31 * result + (y != null ? y.hashCode() : 0);
         return result;
     }
+
     static List<Integer> bucketSizes = new ArrayList<>();
     static MyHashTable<MyTestingClass, String> ht = new MyHashTable<>();
     static Random random = new Random();
+
     public static void main(String[] args) {
         int count = 999999999;
         addElements(count);
         printBucketSizes();
     }
+
     private static void addElements(int count) {
         for (int i = 0; i < count; i++) {
             int x = random.nextInt(100);
@@ -40,7 +43,9 @@ public class MyTestingClass {
             }
             bucketSizes.set(index, bucketSizes.get(index) + 1);
         }
-    } private static void printBucketSizes() {
+    }
+
+    private static void printBucketSizes() {
         int sum = 0;
         for (int index = 0; index < bucketSizes.size(); index++) {
             int size = bucketSizes.get(index);
