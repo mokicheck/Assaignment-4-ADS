@@ -40,4 +40,16 @@ public class MyTestingClass {
             }
             bucketSizes.set(index, bucketSizes.get(index) + 1);
         }
+    } private static void printBucketSizes() {
+        int sum = 0;
+        for (int index = 0; index < bucketSizes.size(); index++) {
+            int size = bucketSizes.get(index);
+            System.out.println("Bucket " + index + ": " + size + " elements");
+            sum += size;
+            if (sum >= 10000) {
+                System.out.println("Sum of all elements is equal to or greater than 10000");
+                break;
+            }
+        }
     }
+}
