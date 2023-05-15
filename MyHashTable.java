@@ -67,3 +67,21 @@ public class MyHashTable<K, V> {
         }
         putRecursive(key, value, chainList, index + 1);
     }
+    public V get(K key) {
+        return (V) getRecursive(key, chainList, 0);
+    }
+
+    private V getRecursive(K key, HashNode<K, V>[] chainList, int index) {
+        if (index >= chainList.length) {
+            return null;
+        }
+        HashNode<K, V> node = chainList[index];
+        if (node != null && node.getKey().equals(key)) {
+            return node.getValue();
+        }
+        return getRecursive(key, chainList, index + 1);
+    }
+
+    public V remove(K key) {
+        return (V) removeRecursive(key, chainList, 0, null);
+    }
