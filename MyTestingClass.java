@@ -26,3 +26,18 @@ public class MyTestingClass {
         addElements(count);
         printBucketSizes();
     }
+    private static void addElements(int count) {
+        for (int i = 0; i < count; i++) {
+            int x = random.nextInt(100);
+            String y = "Element_" + x;
+            MyTestingClass key = new MyTestingClass(x, y);
+            ht.put(key, y);
+            int index = ht.hash(key);
+            if (index >= bucketSizes.size()) {
+                for (int j = bucketSizes.size(); j <= index; j++) {
+                    bucketSizes.add(0);
+                }
+            }
+            bucketSizes.set(index, bucketSizes.get(index) + 1);
+        }
+    }
