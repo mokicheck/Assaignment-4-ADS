@@ -10,7 +10,8 @@ public class main {
         while (!exit) {
             System.out.println("Enter your choice:");
             System.out.println("1. Put (key, value)\n2. Get value by key\n3. Remove by key\n4. Check if value exists\n5. Get key by value");
-            System.out.println("6. Exit");
+            System.out.println("6. Copy elements to empty hash table");
+            System.out.println("7. Exit");
 
             int choice = scanner.nextInt();
             switch (choice) {
@@ -59,6 +60,13 @@ public class main {
                     }
                     break;
                 case 6:
+                    // Create the second hash table
+                    MyHashTable<String, Integer> emptyHashTable = new MyHashTable<>();
+                    // Copy elements from the first hash table to the second hash table
+                    emptyHashTable(table, emptyHashTable);
+                    System.out.println("Elements copied to the empty hash table.");
+                    break;
+                case 7:
                     exit = true;
                     break;
                 default:
@@ -68,5 +76,20 @@ public class main {
         }
 
         System.out.println("Goodbye!");
+    }
+/*
+  @source - The hash table to copy elements from.
+  @destination -  The hash table to copy elements to.
+  @<K> - The type of keys in the hash tables.
+  @<V> - The type of values in the hash tables.
+ */
+    public static <K, V> void emptyHashTable(MyHashTable<K, V> source, MyHashTable<K, V> destination) {
+        for (int i = 0; i < source.capacity; i++) {
+            MyHashTable.Node<K, V> currentNode = source.table[i];
+            while (currentNode != null) {
+                destination.put(currentNode.getKey(), currentNode.getValue());
+                currentNode = currentNode.getNext();
+            }
+        }
     }
 }

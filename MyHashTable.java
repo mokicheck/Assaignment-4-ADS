@@ -1,8 +1,8 @@
 public class MyHashTable<K, V> {
-    private Node<K, V>[] table;
-    private int capacity;
+    Node<K, V>[] table;
+    int capacity;
 
-    private static class Node<K, V> {
+    static class Node<K, V> {
         private K key;
         private V value;
         private Node<K, V> next;
